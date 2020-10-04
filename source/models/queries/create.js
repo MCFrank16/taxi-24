@@ -7,8 +7,8 @@ const createQueries = {
         lastname VARCHAR(150),
         email VARCHAR(150) UNIQUE,
         phonenumber VARCHAR(20) UNIQUE,
-        location VARCHAR(250),
-        status VARCHAR(100),
+        gender VARCHAR(10),
+        profile VARCHAR(250),
         createdAt VARCHAR(100),
         updatedAt VARCHAR(100)
      )
@@ -34,9 +34,9 @@ const createQueries = {
          RiderID VARCHAR(150) ,
          DriverID VARCHAR(150),
          createdAt VARCHAR(100),
-         updateAt VARCHAR(100),
-         FOREIGN KEY (id) REFERENCES Riders (id),
-         FOREIGN KEY (id) REFERENCES Drivers (id)
+         updatedAt VARCHAR(100),
+         FOREIGN KEY (RiderID) REFERENCES Riders (id),
+         FOREIGN KEY (DriverID) REFERENCES Drivers (id)
      )
   `,
 
@@ -46,7 +46,17 @@ const createQueries = {
          TripID VARCHAR(150),
          completedAt VARCHAR(100),
          amount INT,
-         FOREIGN KEY (id) REFERENCES Trips (id) 
+         FOREIGN KEY (TripID) REFERENCES Trips (id) 
+     )
+  `,
+  createTableDriverStats: `
+     CREATE TABLE IF NOT EXISTS Stats(
+        id VARCHAR(150) NOT NULL PRIMARY KEY,
+        DriverID VARCHAR(150),
+        location VARCHAR(250),
+        status VARCHAR(100),
+        updatedAt VARCHAR(100),
+        FOREIGN KEY (DriverID) REFERENCES Drivers (id)
      )
   `
 };
