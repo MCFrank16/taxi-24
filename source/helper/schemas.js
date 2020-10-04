@@ -26,19 +26,12 @@ const phoneNumber = Joi.string()
 
 
 module.exports = {
-  createDriver: Joi.object().keys({
+  createData: Joi.object().keys({
     id: ID,
     firstname: name.required(),
     lastname: name.required(),
     email: Email.required(),
     phonenumber: phoneNumber.required(),
     gender: name.required()
-  }),
-  createRider: Joi.object().keys({
-    id: ID,
-    firstname: name.required(),
-    lastname: name.required(),
-    email: Email.required(),
-    phonenumber: phoneNumber.required()
   })
 };

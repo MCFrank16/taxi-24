@@ -3,11 +3,11 @@ const readQueries = {
         SELECT email, phonenumber FROM ${table} WHERE email = '${email}' AND phonenumber = '${phone}'
     
     `,
-  readAllData: (table) => `
-        SELECT * FROM ${table};
+  readAllData: (type) => `
+        SELECT * FROM Users WHERE type = '${type}';
   `,
-  readData: (table, id) => `
-        SELECT id, firstname, lastname, email, phonenumber, gender, profile FROM ${table} WHERE id = '${id}'
+  readData: (type, id) => `
+        SELECT id, firstname, lastname, email, phonenumber, gender, profile FROM Users WHERE type = '${type}' AND id = '${id}'
   `
 };
 

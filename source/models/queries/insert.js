@@ -1,7 +1,7 @@
 const insertQueries = {
-  insertDriver: (id, firstname, lastname, email, phonenumber, gender, createdAt, updatedAt) => `
-       INSERT INTO Drivers (id, firstname, lastname, email, phonenumber, gender, createdAt, updatedAt)
-       VALUES ('${id}', '${firstname}', '${lastname}', '${email}', '${phonenumber}', '${gender}', '${createdAt}', '${updatedAt}')
+  insertData: (id, firstname, lastname, email, phonenumber, gender, type, createdAt, updatedAt) => `
+       INSERT INTO Users (id, firstname, lastname, email, phonenumber, gender, type, createdAt, updatedAt)
+       VALUES ('${id}', '${firstname}', '${lastname}', '${email}', '${phonenumber}', '${gender}', '${type}', '${createdAt}', '${updatedAt}')
     `
 };
 

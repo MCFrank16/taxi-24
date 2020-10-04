@@ -1,25 +1,15 @@
 const createQueries = {
 
-  createTableDriver: `
-     CREATE TABLE IF NOT EXISTS Drivers(
+  createTableUser: `
+     CREATE TABLE IF NOT EXISTS Users(
         id VARCHAR(150) NOT NULL PRIMARY KEY,
         firstname VARCHAR(150),
         lastname VARCHAR(150),
         email VARCHAR(150) UNIQUE,
         phonenumber VARCHAR(20) UNIQUE,
         gender VARCHAR(10),
-        profile VARCHAR(250),
-        createdAt VARCHAR(100),
-        updatedAt VARCHAR(100)
-     )
-    `,
-  createTableRider: `
-     CREATE TABLE IF NOT EXISTS Riders(
-        id VARCHAR(150) NOT NULL PRIMARY KEY,
-        firstname VARCHAR(150),
-        lastname VARCHAR(150),
-        email VARCHAR(150) UNIQUE,
-        phonenumber VARCHAR(20) UNIQUE,
+        profile VARCHAR(250) DEFAULT 'noimage link',
+        type VARCHAR(10),
         createdAt VARCHAR(100),
         updatedAt VARCHAR(100)
      )
@@ -49,8 +39,8 @@ const createQueries = {
          FOREIGN KEY (TripID) REFERENCES Trips (id) 
      )
   `,
-  createTableDriverStats: `
-     CREATE TABLE IF NOT EXISTS Stats(
+  createTableTrackDriver: `
+     CREATE TABLE IF NOT EXISTS Track(
         id VARCHAR(150) NOT NULL PRIMARY KEY,
         DriverID VARCHAR(150),
         location VARCHAR(250),
