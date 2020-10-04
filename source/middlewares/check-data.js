@@ -1,4 +1,4 @@
-const log = require('../helper/logger');
+const internalError = require('../helper/server-error');
 const db = require('../config/db');
 
 const { readQueries } = require('../models/queries/index');
@@ -13,8 +13,7 @@ module.exports = (table) => async (req, res, next) => {
       return res.status(400).send({ status: 'failed', message: 'User already exist' });
     }
     return next();
-  } catch (error) {
-    log.error(error);
-    return res.status(500).send({ status: 'failed', message: 'Internal server error' });
+  } catch (err) {
+    return internalError(err, res);
   }
 };

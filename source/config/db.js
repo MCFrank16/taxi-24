@@ -7,9 +7,9 @@ const env = require('./environment');
 
 const {
   createTableQueries: {
-    createTableDriver, createTableRider, createTableTrip, createTableInvoice, createTableDriverStats
+    createTableUser, createTableTrip, createTableInvoice, createTableTrackDriver
   },
-  seedQueries: { driverSeed }
+  seedQueries: { dataSeed }
 } = require('../models/queries/index');
 
 
@@ -23,12 +23,11 @@ unlinkSync(env.path);
       filename: env.path,
       driver: sqlite3.Database
     });
-    await d.exec(createTableDriver);
-    await d.exec(createTableRider);
+    await d.exec(createTableUser);
     await d.exec(createTableTrip);
     await d.exec(createTableInvoice);
-    await d.exec(createTableDriverStats);
-    await d.exec(driverSeed);
+    await d.exec(createTableTrackDriver);
+    await d.exec(dataSeed);
     db.database = d;
   } catch (err) {
     log.debug(err);
