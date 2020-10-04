@@ -1,30 +1,38 @@
-const sqlite3 = require('sqlite3').verbose();
-const { resolve, join } = require('path');
+const sqlite3 = require('sqlite3');
+const { open } = require('sqlite');
+const { unlinkSync } = require('fs');
 
 const log = require('../helper/logger');
-const { createTable } = require('../helper/queries/index');
+const env = require('./environment');
 
 const {
-  createTableDriver, createTableRider, createTableTrip, createTableInvoice
-} = createTable;
+  createTableQueries: {
+    createTableDriver, createTableRider, createTableTrip, createTableInvoice, createTableDriverStats
+  },
+  seedQueries: { driverSeed }
+} = require('../models/queries/index');
 
-const path = join(resolve(__dirname), 'database.db');
 
-const Database = {};
+const db = {};
+
+unlinkSync(env.path);
+
 (async () => {
   try {
-    const db = await new sqlite3.Database(path, sqlite3.OPEN_READWRITE);
-    db.serialize(() => {
-      db
-          .run(createTableDriver)
-          .run(createTableRider)
-          .run(createTableTrip)
-          .run(createTableInvoice);
+    const d = await open({
+      filename: env.path,
+      driver: sqlite3.Database
     });
-    Database.database = db;
-  } catch (error) {
-    log.debug(error);
+    await d.exec(createTableDriver);
+    await d.exec(createTableRider);
+    await d.exec(createTableTrip);
+    await d.exec(createTableInvoice);
+    await d.exec(createTableDriverStats);
+    await d.exec(driverSeed);
+    db.database = d;
+  } catch (err) {
+    log.debug(err);
   }
 })();
 
-module.exports = Database;
+module.exports = db;
