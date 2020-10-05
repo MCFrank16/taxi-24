@@ -3,7 +3,7 @@ const _ = require('lodash');
 const Schemas = require('../helper/schemas');
 
 module.exports = (schema) => {
-  const allowedMethod = ['post', 'put', 'patch'];
+  const allowedMethod = ['post', 'put', 'patch', 'get'];
 
   // eslint-disable-next-line consistent-return
   return async (req, res, next) => {

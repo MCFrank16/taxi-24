@@ -1,4 +1,4 @@
-const sqlite3 = require('sqlite3');
+const sqlite3 = require('sqlite3').verbose();
 const { open } = require('sqlite');
 const { unlinkSync } = require('fs');
 
@@ -9,7 +9,7 @@ const {
   createTableQueries: {
     createTableUser, createTableTrip, createTableInvoice, createTableTrackDriver
   },
-  seedQueries: { dataSeed }
+  seedQueries: { dataSeed, seedTrack }
 } = require('../models/queries/index');
 
 
@@ -19,16 +19,16 @@ unlinkSync(env.path);
 
 (async () => {
   try {
-    const d = await open({
+    db.database = await open({
       filename: env.path,
       driver: sqlite3.Database
     });
-    await d.exec(createTableUser);
-    await d.exec(createTableTrip);
-    await d.exec(createTableInvoice);
-    await d.exec(createTableTrackDriver);
-    await d.exec(dataSeed);
-    db.database = d;
+    await db.database.exec(createTableUser);
+    await db.database.exec(createTableTrip);
+    await db.database.exec(createTableInvoice);
+    await db.database.exec(createTableTrackDriver);
+    await db.database.exec(dataSeed);
+    await db.database.exec(seedTrack);
   } catch (err) {
     log.debug(err);
   }

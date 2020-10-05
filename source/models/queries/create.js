@@ -44,7 +44,8 @@ const createQueries = {
         id VARCHAR(150) NOT NULL PRIMARY KEY,
         DriverID VARCHAR(150),
         location VARCHAR(250),
-        status VARCHAR(100),
+        isAvailable VARCHAR(15),
+        onTrip VARCHAR(15),
         updatedAt VARCHAR(100),
         FOREIGN KEY (DriverID) REFERENCES Drivers (id)
      )

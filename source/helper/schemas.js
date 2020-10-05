@@ -1,13 +1,11 @@
 const Joi = require('joi');
 
-
 /**
  *
  * this helper function will aid in validating the request body
  * @exports an object containing all the validation constraints
  *
  */
-
 
 const ID = Joi.string().guid({ version: 'uuidv4' });
 
@@ -33,5 +31,14 @@ module.exports = {
     email: Email.required(),
     phonenumber: phoneNumber.required(),
     gender: name.required()
+  }),
+  updateTrack: Joi.object().keys({
+    id: ID,
+    location: Joi.object().required(),
+    status: Joi.string().trim().required(),
+    onTrip: Joi.string().trim().required()
+  }),
+  location: Joi.object().keys({
+    point: Joi.object().required()
   })
 };
