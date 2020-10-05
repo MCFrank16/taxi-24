@@ -4,9 +4,9 @@
   "description": "Driver fleet management",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=prod node app.js",
-    "dev": "NODE_ENV=dev nodemon --exec node app.js",
-    "test": "NODE_ENV=test nyc --reporter=html --reporter=text --reporter=lcov mocha source/**/*.test.js --exit"
+    "start": "NODE_ENV=prod node files.js && node app.js",
+    "dev": "NODE_ENV=dev node files.js && nodemon --exec node app.js",
+    "test": "NODE_ENV=test node files.js && nyc --reporter=html --reporter=text --reporter=lcov mocha source/**/*.test.js --exit"
   },
   "repository": {
     "type": "git",
