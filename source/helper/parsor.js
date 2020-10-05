@@ -1,8 +1,13 @@
 /**
- * a little function that parse an object
+ * a little function that parse and stringify an object
  *
  */
 
-module.exports.parsor = (val) => JSON.parse(val);
+const parsor = (val) => JSON.parse(val);
 
-// module.export = parsor;
+const stringify = (val1, val2) => JSON.stringify(val1, val2);
+
+module.exports = {
+  parsor,
+  stringify
+};

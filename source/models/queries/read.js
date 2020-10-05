@@ -11,6 +11,12 @@ const readQueries = {
   `,
   readAllAvailable: (table, field, value) => `
         SELECT DriverID, location, isAvailable, onTrip FROM ${table} WHERE ${field} = '${value}'
+  `,
+  readAllTrip: (status) => `
+        SELECT * FROM Trips WHERE status = '${status}'
+  `,
+  readTrip: (id) => `
+        SELECT id, fromLocation, toLocation, status, distance, RiderID, DriverID FROM Trips WHERE id = '${id}' 
   `
 };
 

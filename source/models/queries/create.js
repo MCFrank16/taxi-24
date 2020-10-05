@@ -21,6 +21,8 @@ const createQueries = {
          fromLocation VARCHAR(250),
          toLocation VARCHAR(250),
          status VARCHAR(150),
+         distance INT,
+         amount INT DEFAULT 0,
          RiderID VARCHAR(150) ,
          DriverID VARCHAR(150),
          createdAt VARCHAR(100),

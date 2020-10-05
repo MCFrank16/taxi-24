@@ -38,7 +38,15 @@ module.exports = {
     status: Joi.string().trim().required(),
     onTrip: Joi.string().trim().required()
   }),
-  location: Joi.object().keys({
-    point: Joi.object().required()
+  createTrip: Joi.object().keys({
+    id: ID,
+    from: Joi.object().required(),
+    to: Joi.object().required(),
+    riderID: ID.required(),
+    driverID: ID.required(),
+    status: Joi.string().required()
+  }),
+  completeTrip: Joi.object().keys({
+    price: Joi.number().required()
   })
 };

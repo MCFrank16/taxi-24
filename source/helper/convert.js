@@ -25,6 +25,4 @@ const getDistance = (lat1, lon1, lat2, lon2) => {
   return d;
 };
 
-// const l = getDistance(1.338863, 32.574064, 1.348864, 32.574065);
-// console.log(l);
 module.exports = getDistance;

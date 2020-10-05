@@ -1,9 +1,7 @@
 const internalError = require('../helper/server-error');
 const db = require('../config/db');
 
-const { readQueries } = require('../models/queries/index');
-
-const { checkData } = readQueries;
+const { readQueries: { checkData } } = require('../models/queries/index');
 
 /**
  * this middleware check if data is not in database or return 400 with empty body
@@ -38,7 +36,7 @@ const shouldExist = (table, field) => async (req, res, next) => {
       req.data = exist;
       return next();
     }
-    return res.status(404).json({ status: 'failed', message: 'Driver is not found' });
+    return res.status(404).json({ status: 'failed', message: 'Data not found' });
   } catch (err) {
     return internalError(err, res);
   }

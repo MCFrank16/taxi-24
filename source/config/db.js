@@ -9,7 +9,9 @@ const {
   createTableQueries: {
     createTableUser, createTableTrip, createTableInvoice, createTableTrackDriver
   },
-  seedQueries: { dataSeed, seedTrack }
+  seedQueries: {
+    dataSeed, seedTrack, seedTrip, seedInvoice
+  }
 } = require('../models/queries/index');
 
 
@@ -29,6 +31,8 @@ unlinkSync(env.path);
     await db.database.exec(createTableTrackDriver);
     await db.database.exec(dataSeed);
     await db.database.exec(seedTrack);
+    await db.database.exec(seedTrip);
+    await db.database.exec(seedInvoice);
   } catch (err) {
     log.debug(err);
   }
