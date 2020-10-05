@@ -7,6 +7,14 @@ const {
   readQueries: { readAllData, readData }
 } = require('../models/queries/index');
 
+/**
+ * this controller create either a rider or a driver
+ *
+ * @param {object} req this is the request object
+ * @param {object} res this is the response object
+ *
+ * @return {object} it will return an object containing the status and message.
+ */
 
 const createUser = (type) => async (req, res) => {
   try {
@@ -29,6 +37,15 @@ const createUser = (type) => async (req, res) => {
   }
 };
 
+/**
+ * this controller get all users. a user can be a rider or a driver
+ *
+ * @param {object} req this is the request object
+ * @param {object} res this is the response object
+ *
+ * @return {object} it will return an object containing the status and message.
+ */
+
 const getAllUser = (type) => async (req, res) => {
   try {
     const result = await db.database.all(readAllData(type));
@@ -37,6 +54,15 @@ const getAllUser = (type) => async (req, res) => {
     return internalError(err, res);
   }
 };
+
+/**
+ * this controller get a single rider or driver.
+ *
+ * @param {object} req this is the request object
+ * @param {object} res this is the response object
+ *
+ * @return {object} it will return an object containing the status and message.
+ */
 
 const getUser = (type) => async (req, res) => {
   try {
