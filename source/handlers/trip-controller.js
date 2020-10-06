@@ -1,15 +1,15 @@
 const { v4 } = require('uuid');
-const db = require('../../config/db');
-const internalError = require('../../helper/server-error');
-const { stringify } = require('../../helper/parsor');
-const converter = require('../../helper/convert');
+const db = require('../config/db');
+const internalError = require('../helper/server-error');
+const { stringify } = require('../helper/parsor');
+const converter = require('../helper/convert');
 
 
 const {
   insertQueries: { insertTrip, insertInvoice },
   updateQueries: { updateDriverStatus, completeTrip },
   readQueries: { readAllTrip }
-} = require('../../models/queries/index');
+} = require('../models/queries/index');
 
 
 /**

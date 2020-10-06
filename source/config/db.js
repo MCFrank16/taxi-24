@@ -17,7 +17,7 @@ const {
 
 const db = {};
 
-unlinkSync(env.path);
+if (process.env.NODE_ENV === 'test') unlinkSync(env.path);
 
 (async () => {
   try {

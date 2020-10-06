@@ -11,10 +11,10 @@ chai.use(http);
 describe('testing the driver handler', () => {
   let id;
   const driver = {
-    firstname: 'Harerimana',
-    lastname: 'Claude',
-    email: 'harera2020@gmail.com',
-    phonenumber: '+250788995532',
+    firstname: 'Hakiza',
+    lastname: 'Bosco',
+    email: 'hakBos2020@gmail.com',
+    phonenumber: '+250788995912',
     gender: 'male'
   };
 

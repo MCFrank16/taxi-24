@@ -29,9 +29,10 @@ const shouldNotExist = (table, field) => async (req, res, next) => {
  * @return {object}
  */
 
-const shouldExist = (table, field) => async (req, res, next) => {
+const shouldTrackExist = (table, field) => async (req, res, next) => {
   try {
-    const exist = await db.database.all(checkData(table, field, req.value[field]));
+    const { driverID } = req.params;
+    const exist = await db.database.all(checkData(table, field, driverID));
     if (exist.length > 0) {
       req.data = exist;
       return next();
@@ -44,5 +45,5 @@ const shouldExist = (table, field) => async (req, res, next) => {
 
 module.exports = {
   shouldNotExist,
-  shouldExist
+  shouldTrackExist
 };
