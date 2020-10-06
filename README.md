@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/MCFrank16/taxi-24.svg?branch=main)](https://travis-ci.org/MCFrank16/taxi-24)
+
 # taxi-24
 APIs for managing other companies fleet of drivers and allocate drivers to passengers.
 
