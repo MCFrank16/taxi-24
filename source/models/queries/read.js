@@ -1,7 +1,6 @@
 const readQueries = {
   checkData: (table, field, value) => `
         SELECT * FROM ${table} WHERE ${field} = '${value}'
-    
     `,
   readAllData: (type) => `
         SELECT * FROM Users WHERE type = '${type}';

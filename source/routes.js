@@ -2,7 +2,7 @@ const { Router } = require('express');
 
 // Middlewares importation
 const checkInput = require('./middlewares/validate');
-const { shouldExist, shouldNotExist } = require('./middlewares/check-data');
+const { shouldTrackExist, shouldNotExist } = require('./middlewares/check-data');
 const getAllDrivers = require('./middlewares/get-drivers');
 const invoice = require('./middlewares/invoice');
 
@@ -15,7 +15,7 @@ const {
 
 const {
   createTrip, ActiveTrips, CompletedTrip, finishTrip
-} = require('./handlers/Trip/trip-controller');
+} = require('./handlers/trip-controller');
 
 const router = Router();
 
@@ -23,7 +23,7 @@ const router = Router();
 router.post('/api/v1/create/driver', checkInput('createData'), shouldNotExist('Users', 'email'), createUser('driver'));
 router.get('/api/v1/read/all/drivers', getAllUser('driver'));
 router.get('/api/v1/read/driver/:id', getUser('driver'));
-router.put('/api/v1/update/track/:driverID', checkInput('updateTrack'), shouldExist('Track', 'DriverID'), trackDriver);
+router.put('/api/v1/update/track/:driverID', checkInput('updateTrack'), shouldTrackExist('Track', 'DriverID'), trackDriver);
 router.get('/api/v1/read/all/available', getAllDrivers, allAvailableDrivers);
 router.get('/api/v1/read/drivers/within', getAllDrivers, getAllDriversWithin3KM);
 
