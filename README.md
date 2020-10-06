@@ -15,7 +15,8 @@ APIs for managing other companies fleet of drivers and allocate drivers to passe
 
 - Create a `.env` and declare in your PORT as 9500 or whatever you like.
 
-- Now you can run `npm run dev` to start the application in development mode.
+- Now you can run `npm run setup:db` to set up the database files.
+- Now run `npm run dev` to start the dev environment.
 - Endpoint can now be tested in Postman
 
 ### 2. Steps for running tests
